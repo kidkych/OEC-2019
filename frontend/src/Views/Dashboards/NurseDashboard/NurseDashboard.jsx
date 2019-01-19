@@ -1,6 +1,7 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 import GenericDashboard from '../GenericDashboard/GenericDashboard'
+import ListOfPatients from './ListOfPatients'
 
 class NurseDashboard extends Component {
     constructor(props) {
@@ -15,12 +16,14 @@ class NurseDashboard extends Component {
         });
     }
     render() {
-        var pages=[
-            {id: 'page.home', name: 'Home'},
-            {id: 'page.tasks', name: 'Tasks'},
+        var pages = [
+            { id: 'page.home', name: 'Home' },
+            { id: 'page.tasks', name: 'Tasks' },
+            { id: 'page.patients', name: 'Patient List' },
         ];
         return (
             <GenericDashboard
+                pages={pages}
                 onPageChange={this.onPageChange}
                 title={this.props.title}>
                 {this.state.currentPage === 'page.home' &&
@@ -28,6 +31,9 @@ class NurseDashboard extends Component {
                 }
                 {this.state.currentPage === 'page.tasks' &&
                     "Tasks page"
+                }
+                {this.state.currentPage === 'page.patients' &&
+                    <ListOfPatients />
                 }
             </GenericDashboard>
         );

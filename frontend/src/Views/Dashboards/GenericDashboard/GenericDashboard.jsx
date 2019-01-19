@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import FixedMenu from './FixedMenu'
 
 class Login extends Component {
@@ -14,17 +14,13 @@ class Login extends Component {
         });
     }
     render() {
-        var pages=[
-            {id: 'page.home', name: 'Home'},
-            {id: 'page.tasks', name: 'Tasks'},
-        ];
         return (
             <div>
                 <FixedMenu
                     title={this.props.title}
-                    buttonList={pages} default="page.home"
+                    buttonList={this.props.pages} default="page.home"
                     onSwitch={this.props.onPageChange}
-                    />
+                />
                 {this.props.children}
             </div>
         );
