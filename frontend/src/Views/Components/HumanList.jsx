@@ -10,11 +10,6 @@ class HumanList extends Component {
         this.state = {};
         this.state.items = props.items;
     }
-    getDefaultProps = () => {
-        return {
-            items: [],
-        }
-    }
     selectPatient = (id) => {
         this.setState({
             selectedPatient: id,
@@ -24,12 +19,15 @@ class HumanList extends Component {
         var items = this.state.items.map((item) => {
             var actionButtons = item.actions.map((action) => {
                 return (
-                    <Button>{action.text}</Button>
+                    <Button
+                        key={item.id + '.' + action.id}
+                        onClick={() => this.props.actionListener(item.id, action.id)}
+                    > {action.text}</Button >
                 );
             })
             return (
-                <List.Item>
-                    <List.Icon name='{item.icon}' size='large' verticalAlign='middle' />
+                <List.Item key={item.id}>
+                    <List.Icon name={item.icon} size='large' verticalAlign='middle' />
                     <List.Content>
                         <List.Header as='a'>{item.title}</List.Header>
                         <List.Description as='a'>{item.status}</List.Description>
@@ -43,7 +41,7 @@ class HumanList extends Component {
         return (
             <List divided relaxed>
                 {items}
-            </List>
+            </List >
         );
     }
 }

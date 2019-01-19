@@ -9,12 +9,12 @@ class ListOfPatients extends Component {
         this.state.patients = [
             {
                 name: "Bob",
-                num: "123456",
+                num: "1001",
                 status: "some status text",
             },
             {
                 name: "Jeremy Bearimy",
-                num: "123456",
+                num: "1002",
                 status: "some status text",
             },
         ];
@@ -24,10 +24,15 @@ class ListOfPatients extends Component {
             selectedPatient: id,
         });
     }
+    patientAction = (item, action) => {
+        console.log("Performing " + action + " on " + item);
+    }
     render() {
         var patients = this.state.patients.map((patient) => {
             return {
+                icon: 'heart',
                 title: patient.num + " " + patient.name,
+                id: patient.num,
                 status: patient.status,
                 indicators: [],
                 actions: [
@@ -48,7 +53,10 @@ class ListOfPatients extends Component {
         });
         return (
             <Container className="util-container-addtop">
-                <HumanList items={patients} />
+                <HumanList
+                    items={patients}
+                    actionListener={this.patientAction}
+                />
             </Container>
         );
     }
