@@ -4,17 +4,18 @@ import GenericDashboard from '../GenericDashboard/GenericDashboard'
 import ListOfPatients from './ListOfPatients'
 import ListOfNotes from './ListOfNotes'
 import TaskList from '../../Components/TaskList';
-import { Grid, Container } from 'semantic-ui-react';
+import { Grid, Container, Rail, Segment } from 'semantic-ui-react';
 
 class NurseDashboard extends Component {
     constructor(props) {
         super(props);
         this.state = {
             currentPage: 'page.home',
-            lastPage: 'page.patients', // TODO: update this
+            lastPage: 'page.home',
         }
     }
     onPageChange = (id) => {
+        this.state.lastPage = this.state.currentPage;
         this.setState({
             currentPage: id,
         });
@@ -50,14 +51,25 @@ class NurseDashboard extends Component {
                             <Grid.Row columns={2}>
                                 <Grid.Column>
                                     <Grid.Row columns={1}>
+                                        <Container className='util-container-addtop'>
+                                            <Segment className='util-container-addtop'>
+                                                Urgent notifications go here
+                                            </Segment>
+                                        </Container>
                                     </Grid.Row>
                                     <Grid.Row columns={1}>
-                                        <ListOfPatients actionListener={this.onPatientAction} />
+                                        <Container className='util-container-addtop'>
+                                            <Segment className='util-container-addtop'>
+                                                <ListOfPatients actionListener={this.onPatientAction} />
+                                            </Segment>
+                                        </Container>
                                     </Grid.Row>
                                 </Grid.Column>
                                 <Grid.Column>
                                     <Container className='util-container-addtop'>
-                                        <TaskList tasks={sampleDataTasks} />
+                                        <Segment className='util-container-addtop'>
+                                            <TaskList tasks={sampleDataTasks} />
+                                        </Segment>
                                     </Container>
                                 </Grid.Column>
                             </Grid.Row>
