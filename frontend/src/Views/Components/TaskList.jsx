@@ -11,6 +11,7 @@ class TaskList extends Component {
         this.state.tasks = props.tasks;
     }
     render() {
+        // Render each task
         var tasks = this.state.tasks.map((task) => {
             return (
                 <List.Item key={task.id}>
@@ -22,6 +23,8 @@ class TaskList extends Component {
                 </List.Item>
             );
         })
+
+        // Render final list of tasks
         return (
             <List divided relaxed>
                 {tasks}

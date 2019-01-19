@@ -11,6 +11,7 @@ class NoteList extends Component {
         this.state.notes = props.notes;
     }
     render() {
+        // Render each note
         var notes = this.state.notes.map((note) => {
             return (
                 <List.Item key={note.id}>
@@ -23,6 +24,8 @@ class NoteList extends Component {
                 </List.Item>
             );
         })
+
+        // Render final list of notes
         return (
             <List divided relaxed>
                 {notes}

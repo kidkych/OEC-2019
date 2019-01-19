@@ -2,10 +2,13 @@ import React, { Component } from 'react';
 import { Container, List } from 'semantic-ui-react'
 import HumanList from '../../Components/HumanList';
 
+// ListOfPatients fetches patient information and displays a list
 class ListOfPatients extends Component {
     constructor(props) {
         super(props);
         this.state = {};
+
+        // Hard-coded sample data for patients
         this.state.patients = [
             {
                 name: "Bob",
@@ -20,11 +23,13 @@ class ListOfPatients extends Component {
         ];
     }
     selectPatient = (id) => {
+        // Set the state when a patient is selected (currently unused)
         this.setState({
             selectedPatient: id,
         });
     }
     render() {
+        // Map patient data from database format to rendering format
         var patients = this.state.patients.map((patient) => {
             return {
                 icon: 'heart',

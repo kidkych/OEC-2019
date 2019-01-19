@@ -16,7 +16,10 @@ class HumanList extends Component {
         });
     }
     render() {
+        // Render each list item
         var items = this.state.items.map((item) => {
+
+            // Render each action button
             var actionButtons = item.actions.map((action) => {
                 return (
                     <Button
@@ -25,6 +28,8 @@ class HumanList extends Component {
                     > {action.text}</Button >
                 );
             })
+
+            // Render entire list item
             return (
                 <List.Item key={item.id}>
                     <List.Icon name={item.icon} size='large' verticalAlign='middle' />
@@ -38,6 +43,8 @@ class HumanList extends Component {
                 </List.Item>
             );
         })
+
+        // Render final list of humans
         return (
             <List divided relaxed>
                 {items}
