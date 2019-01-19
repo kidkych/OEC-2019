@@ -3,7 +3,7 @@ import { Container, Button, List } from 'semantic-ui-react'
 import HumanList from '../../Components/HumanList';
 import NoteList from '../../Components/NoteList';
 
-class ListOfPatients extends Component {
+class ListOfNotes extends Component {
     constructor(props) {
         super(props);
         this.state = {};
@@ -36,4 +36,4 @@ class ListOfPatients extends Component {
     }
 }
 
-export default ListOfPatients;
+export default ListOfNotes;

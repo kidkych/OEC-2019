@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import GenericDashboard from '../GenericDashboard/GenericDashboard'
 import ListOfPatients from './ListOfPatients'
 import ListOfNotes from './ListOfNotes'
+import TaskList from '../../Components/TaskList';
+import { Grid, Container } from 'semantic-ui-react';
 
 class NurseDashboard extends Component {
     constructor(props) {
@@ -28,16 +30,44 @@ class NurseDashboard extends Component {
             { id: 'page.tasks', name: 'Tasks' },
             { id: 'page.patients', name: 'Patient List' },
         ];
+
+        var sampleDataTasks = [
+            {
+                id: 't001',
+                title: 'Reminder',
+                text: 'Some task description',
+            },
+        ];
+
         return (
             <GenericDashboard
                 pages={pages}
                 onPageChange={this.onPageChange}
                 title={this.props.title}>
                 {this.state.currentPage === 'page.home' &&
-                    "Home page"
+                    <Container>
+                        <Grid>
+                            <Grid.Row columns={2}>
+                                <Grid.Column>
+                                    <Grid.Row columns={1}>
+                                    </Grid.Row>
+                                    <Grid.Row columns={1}>
+                                        <ListOfPatients actionListener={this.onPatientAction} />
+                                    </Grid.Row>
+                                </Grid.Column>
+                                <Grid.Column>
+                                    <Container className='util-container-addtop'>
+                                        <TaskList tasks={sampleDataTasks} />
+                                    </Container>
+                                </Grid.Column>
+                            </Grid.Row>
+                        </Grid>
+                    </Container>
                 }
                 {this.state.currentPage === 'page.tasks' &&
-                    "Tasks page"
+                    <Container className='util-container-addtop'>
+                        <TaskList tasks={sampleDataTasks} />
+                    </Container>
                 }
                 {this.state.currentPage === 'page.patients' &&
                     <ListOfPatients actionListener={this.onPatientAction} />
