@@ -24,9 +24,6 @@ class ListOfPatients extends Component {
             selectedPatient: id,
         });
     }
-    patientAction = (item, action) => {
-        console.log("Performing " + action + " on " + item);
-    }
     render() {
         var patients = this.state.patients.map((patient) => {
             return {
@@ -55,7 +52,7 @@ class ListOfPatients extends Component {
             <Container className="util-container-addtop">
                 <HumanList
                     items={patients}
-                    actionListener={this.patientAction}
+                    actionListener={this.props.actionListener}
                 />
             </Container>
         );
