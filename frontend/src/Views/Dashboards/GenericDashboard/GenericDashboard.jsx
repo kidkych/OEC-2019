@@ -21,16 +21,11 @@ class Login extends Component {
         return (
             <div>
                 <FixedMenu
+                    title={this.props.title}
                     buttonList={pages} default="page.home"
-                    onSwitch={this.onPageChange}
+                    onSwitch={this.props.onPageChange}
                     />
-                <p>Haiyo</p>
-                {this.state.currentPage === 'page.home' &&
-                    "Home page"
-                }
-                {this.state.currentPage === 'page.tasks' &&
-                    "Tasks page"
-                }
+                {this.props.children}
             </div>
         );
     }

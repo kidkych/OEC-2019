@@ -29,9 +29,8 @@ class Login extends Component {
             <div>
                 <Menu inverted>
                 <Container>
-                    <Menu.Item as='a' header>
-                    <Image size='mini' src='/logo.png' style={{ marginRight: '1.5em' }} />
-                    Project Name
+                    <Menu.Item header>
+                        {this.props.title}
                     </Menu.Item>
 
                     {tabItems}
