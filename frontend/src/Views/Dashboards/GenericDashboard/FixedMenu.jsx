@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Menu, Image, Dropdown, Container} from 'semantic-ui-react'
 
-class Login extends Component {
+class FixedMenu extends Component {
     render() {
         return (
             <div>
@@ -37,4 +37,4 @@ class Login extends Component {
     }
 }
 
-export default Login;
+export default FixedMenu;

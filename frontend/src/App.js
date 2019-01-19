@@ -9,7 +9,7 @@ import GenericDashboard from './Views/Dashboards/GenericDashboard/GenericDashboa
 class App extends Component {
   render() {
     return (
-      <GenericDashboard/>
+      <Login/>
     );
   }
 }
