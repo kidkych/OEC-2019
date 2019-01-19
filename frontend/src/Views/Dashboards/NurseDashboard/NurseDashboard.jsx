@@ -10,7 +10,7 @@ class NurseDashboard extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            currentPage: 'page.home',
+            currentPage: 'page.tasks',
             lastPage: 'page.home',
         }
     }
