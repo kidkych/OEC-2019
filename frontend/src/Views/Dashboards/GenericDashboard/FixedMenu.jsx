@@ -2,34 +2,40 @@ import React, {Component} from 'react';
 import { Menu, Image, Dropdown, Container} from 'semantic-ui-react'
 
 class Login extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            buttonList: props.buttonList,
+            activeTab: this.props.default,
+        };
+    }
+    onSwitch = (name) => {
+        this.setState({
+            activeTab: name,
+        })
+        this.props.onSwitch(name);
+    }
     render() {
+        var tabItems = this.state.buttonList.map((btn) =>
+            <Menu.Item 
+                className={
+                    "tab" + (btn.id == this.state.activeTab ? " active" : "")
+                }
+                onClick={(e) => this.onSwitch(btn.id)}
+                key={btn.id}
+            >{btn.name}</Menu.Item>
+        );
         return (
             <div>
-                <Menu fixed='top' inverted>
+                <Menu inverted>
                 <Container>
                     <Menu.Item as='a' header>
                     <Image size='mini' src='/logo.png' style={{ marginRight: '1.5em' }} />
                     Project Name
                     </Menu.Item>
-                    <Menu.Item as='a'>Home</Menu.Item>
-            
-                    <Dropdown item simple text='Dropdown'>
-                    <Dropdown.Menu>
-                        <Dropdown.Item>List Item</Dropdown.Item>
-                        <Dropdown.Item>List Item</Dropdown.Item>
-                        <Dropdown.Divider />
-                        <Dropdown.Header>Header Item</Dropdown.Header>
-                        <Dropdown.Item>
-                        <i className='dropdown icon' />
-                        <span className='text'>Submenu</span>
-                        <Dropdown.Menu>
-                            <Dropdown.Item>List Item</Dropdown.Item>
-                            <Dropdown.Item>List Item</Dropdown.Item>
-                        </Dropdown.Menu>
-                        </Dropdown.Item>
-                        <Dropdown.Item>List Item</Dropdown.Item>
-                    </Dropdown.Menu>
-                    </Dropdown>
+
+                    {tabItems}
+
                 </Container>
                 </Menu>
             </div>
