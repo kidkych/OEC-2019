@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Container, List } from 'semantic-ui-react'
+import HumanList from '../../Components/HumanList';
 
 class ListOfPatients extends Component {
     constructor(props) {
@@ -24,20 +25,30 @@ class ListOfPatients extends Component {
         });
     }
     render() {
-        var patients = this.state.patients.map((patient) =>
-            <List.Item>
-                <List.Icon name='heart' size='large' verticalAlign='middle' />
-                <List.Content>
-                    <List.Header as='a'>{patient.num} - {patient.name}</List.Header>
-                    <List.Description as='a'>{patient.status}</List.Description>
-                </List.Content>
-            </List.Item>
-        )
+        var patients = this.state.patients.map((patient) => {
+            return {
+                title: patient.num + " " + patient.name,
+                status: patient.status,
+                indicators: [],
+                actions: [
+                    {
+                        text: "Need Help",
+                        id: "action.need_patient_Help",
+                    },
+                    {
+                        text: "View Notes",
+                        id: "action.view_patient_notes",
+                    },
+                    {
+                        text: "Add Note",
+                        id: "action.add_patient_note",
+                    },
+                ]
+            }
+        });
         return (
             <Container className="util-container-addtop">
-                <List divided relaxed>
-                    {patients}
-                </List>
+                <HumanList items={patients} />
             </Container>
         );
     }

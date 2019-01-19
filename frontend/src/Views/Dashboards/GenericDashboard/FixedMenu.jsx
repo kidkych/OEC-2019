@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
-import { Menu, Image, Dropdown, Container} from 'semantic-ui-react'
+import React, { Component } from 'react';
+import { Menu, Image, Dropdown, Container } from 'semantic-ui-react'
 
-class Login extends Component {
+class FixedMenu extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -17,7 +17,7 @@ class Login extends Component {
     }
     render() {
         var tabItems = this.state.buttonList.map((btn) =>
-            <Menu.Item 
+            <Menu.Item
                 className={
                     "tab" + (btn.id == this.state.activeTab ? " active" : "")
                 }
@@ -28,14 +28,14 @@ class Login extends Component {
         return (
             <div>
                 <Menu inverted>
-                <Container>
-                    <Menu.Item header>
-                        {this.props.title}
-                    </Menu.Item>
+                    <Container>
+                        <Menu.Item header>
+                            {this.props.title}
+                        </Menu.Item>
 
-                    {tabItems}
+                        {tabItems}
 
-                </Container>
+                    </Container>
                 </Menu>
             </div>
         );
